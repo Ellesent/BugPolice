@@ -35,7 +35,5 @@ public class MiniFridge : MonoBehaviour
             fridgeDoor.transform.Rotate(new Vector3(0,-90,0));
             isOpen=true;
         }
-
-        Debug.Log("Fridge Clicked!");
     }
 }

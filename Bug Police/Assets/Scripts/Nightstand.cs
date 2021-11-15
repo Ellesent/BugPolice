@@ -25,7 +25,7 @@ public class Nightstand : MonoBehaviour
     void OnMouseDown()
     {
         Vector3 currDrawerPosition = drawer.transform.position;
-        // Open/Close fridge door depending on state
+        // Open/Close drawer in nightstand
         // TODO Possibly move to a state machine
         if (isOpen) {
             drawer.transform.position = new Vector3(currDrawerPosition.x,  currDrawerPosition.y, currDrawerPosition.z + toMove);
@@ -36,7 +36,5 @@ public class Nightstand : MonoBehaviour
             drawer.transform.position = new Vector3(currDrawerPosition.x, currDrawerPosition.y, currDrawerPosition.z - toMove);
             isOpen=true;
         }
-
-        Debug.Log("Nightstand Clicked!");
     }
 }
