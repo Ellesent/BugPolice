@@ -9,10 +9,16 @@ public class MiniFridge : MonoBehaviour
 
     [SerializeField]
     GameObject fridgeDoor;
+
+    [SerializeField]
+    Light fridgeLight;
+
+    [SerializeField]
+    float lightIntensity;
     // Start is called before the first frame update
     void Start()
     {
-        
+        fridgeLight.intensity = 0;
     }
 
     // Update is called once per frame
@@ -28,11 +34,13 @@ public class MiniFridge : MonoBehaviour
         // TODO Possibly move to a state machine
         if (isOpen) {
             fridgeDoor.transform.Rotate(new Vector3(0,90,0));
+            fridgeLight.intensity = 0;
             isOpen=false;
         }
 
         else {
             fridgeDoor.transform.Rotate(new Vector3(0,-90,0));
+            fridgeLight.intensity = lightIntensity;
             isOpen=true;
         }
     }
