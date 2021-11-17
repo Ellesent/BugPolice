@@ -5,13 +5,16 @@ using UnityEngine;
 public class MainMenuAnimation : MonoBehaviour
 {
 
-    float inTime = 1f;
+    float inTime = 0.8f;
 
     [SerializeField]
     RectTransform titleOne;
 
     [SerializeField]
     RectTransform titleTwo;
+
+    [SerializeField]
+    RectTransform titleThree;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,18 +28,20 @@ public class MainMenuAnimation : MonoBehaviour
 
     }
 
-     private IEnumerator FullMainMenuAnimation() {
-         yield return StartCoroutine(SlideInRoutine(new Vector2(0.5f, 0.5f)));
-     }
-
-    private IEnumerator SlideInRoutine(Vector2 AnchorOffsetPosition)
+    private IEnumerator FullMainMenuAnimation()
     {
-        Vector2 origPos = titleOne.anchoredPosition;
-        titleOne.anchorMin = new Vector2(0.5f, 0.7f);
-        titleOne.anchorMax = new Vector2(0.5f, 0.7f);
+        yield return StartCoroutine(SlideInRoutine(new Vector2(0.5f, 200f), titleOne));
+        yield return StartCoroutine(SlideInRoutine(new Vector2(0.5f, 115f), titleTwo));
+        yield return StartCoroutine(SlideInRoutine(new Vector2(0.5f, 25f), titleThree));
+
+    }
+
+    private IEnumerator SlideInRoutine(Vector2 AnchorOffsetPosition, RectTransform item)
+    {
+        Vector2 origPos = item.anchoredPosition;
         for (float t = 0.01f; t < inTime; t += Time.deltaTime)
         {
-            titleOne.anchoredPosition = Vector2.Lerp(origPos, AnchorOffsetPosition, Mathf.Min(1, t / inTime));
+            item.anchoredPosition = Vector2.Lerp(origPos, AnchorOffsetPosition, Mathf.Min(1, t / inTime));
             yield return null;
         }
     }
