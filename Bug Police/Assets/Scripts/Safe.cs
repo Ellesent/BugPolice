@@ -15,14 +15,23 @@ public class Safe : MonoBehaviour
     GameObject safeDoor;
 
     [SerializeField]
-    GameObject DepthFieldBoxVolume;
+    GameObject depthFieldBoxVolume;
+
+    [SerializeField]
+    GameObject upcloseSafeToSpawn;
+
+    Vector3 spawnPosition;
+
+    Vector3 size;
+
     // Start is called before the first frame update
     void Start()
     {
-        // create an instance of the depth of field effect
-        //depth = ScriptableObject.CreateInstance<DepthOfField>();
-        //depth.enabled.Override(true);
-       // depth.focalLength.Override(1f);
+       spawnPosition =  Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane));
+       size = upcloseSafeToSpawn.GetComponent<BoxCollider>().size;
+       spawnPosition.y = spawnPosition.y - size.y;
+       spawnPosition.z  = spawnPosition.z + 1f;
+       Debug.Log(spawnPosition);
         
     }
 
@@ -38,15 +47,16 @@ public class Safe : MonoBehaviour
         // Open/Close drawer in nightstand
         // TODO Possibly move to a state machine
         if (isOpen) {
-           DepthFieldBoxVolume.SetActive(false);
+            safeDoor.transform.Rotate(new Vector3(0,0, 90));
+           depthFieldBoxVolume.SetActive(false);
            // drawer.transform.position = new Vector3(currDrawerPosition.x,  currDrawerPosition.y, currDrawerPosition.z + toMove);
             isOpen=false;
         }
 
         else {
-            DepthFieldBoxVolume.SetActive(true);
-           // m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, depth);
-            //drawer.transform.position = new Vector3(currDrawerPosition.x, currDrawerPosition.y, currDrawerPosition.z - toMove);
+            depthFieldBoxVolume.SetActive(true);
+            safeDoor.transform.Rotate(new Vector3(0,0, -90));
+            GameObject.Instantiate(upcloseSafeToSpawn, spawnPosition, upcloseSafeToSpawn.transform.rotation);
             isOpen=true;
         }
     }
