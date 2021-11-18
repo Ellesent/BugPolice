@@ -13,6 +13,9 @@ public class Safe : MonoBehaviour
 
     [SerializeField]
     GameObject safeDoor;
+
+    [SerializeField]
+    GameObject DepthFieldBoxVolume;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,12 +38,13 @@ public class Safe : MonoBehaviour
         // Open/Close drawer in nightstand
         // TODO Possibly move to a state machine
         if (isOpen) {
-           // RuntimeUtilities.DestroyVolume(m_Volume, true, false);
+           DepthFieldBoxVolume.SetActive(false);
            // drawer.transform.position = new Vector3(currDrawerPosition.x,  currDrawerPosition.y, currDrawerPosition.z + toMove);
             isOpen=false;
         }
 
         else {
+            DepthFieldBoxVolume.SetActive(true);
            // m_Volume = PostProcessManager.instance.QuickVolume(gameObject.layer, 100f, depth);
             //drawer.transform.position = new Vector3(currDrawerPosition.x, currDrawerPosition.y, currDrawerPosition.z - toMove);
             isOpen=true;
