@@ -1,5 +1,68 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &39915504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 39915507}
+  - component: {fileID: 39915506}
+  - component: {fileID: 39915505}
+  m_Layer: 0
+  m_Name: Box Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &39915507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39915504}
+  m_LocalRotation: {x: -0, y: -0.9935719, z: -0.11320323, w: 0}
+  m_LocalPosition: {x: 0.57, y: 0.54, z: -0.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7086372043452855783}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &39915506
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39915504}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7663643, y: 1, z: 2.098256}
+  m_Center: {x: 0.32444775, y: 0, z: -0.54912806}
+--- !u!114 &39915505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39915504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 0
+  priority: 1
+  blendDistance: 1
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: f758c54d9dd2dd847a3fe5ebb609def2, type: 2}
 --- !u!1 &1439001747387537648
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7086372043452855783}
   - component: {fileID: 2174336925602202213}
+  - component: {fileID: 573500769854234643}
   m_Layer: 0
   m_Name: UpcloseSafe
   m_TagString: Untagged
@@ -232,6 +296,7 @@ Transform:
   - {fileID: 1783147106047794284}
   - {fileID: 5685586379205601801}
   - {fileID: 8316365585619081066}
+  - {fileID: 39915507}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -13, y: 180, z: 0}
@@ -248,6 +313,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2626119, y: 0.6268268, z: 1}
   m_Center: {x: 0.0073132515, y: 0.3669636, z: 0}
+--- !u!114 &573500769854234643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7573939086863658845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa889fca950f38446b8413b2fae402cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backButton: {fileID: 568199041186343935, guid: 4e393fdab540f0144b7e97191e3a1670, type: 3}
 --- !u!1 &7968398997884614288
 GameObject:
   m_ObjectHideFlags: 0

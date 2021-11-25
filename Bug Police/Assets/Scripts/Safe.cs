@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class Safe : MonoBehaviour
 {
-     // variables used for blurring the background when the user looks at the safe
-      //PostProcessVolume m_Volume;
-     // DepthOfField depth;
+
        private bool isOpen = false;
+       private bool isUnlocked = false;
 
        private float toMove = 0.5f;
 
     [SerializeField]
     GameObject safeDoor;
 
-    [SerializeField]
-    GameObject depthFieldBoxVolume;
 
     [SerializeField]
     GameObject upcloseSafeToSpawn;
@@ -46,18 +43,19 @@ public class Safe : MonoBehaviour
         Vector3 currDrawerPosition = safeDoor.transform.position;
         // Open/Close drawer in nightstand
         // TODO Possibly move to a state machine
-        if (isOpen) {
+        if (isUnlocked) {
+            if (isOpen) {
             safeDoor.transform.Rotate(new Vector3(0,0, 90));
-           depthFieldBoxVolume.SetActive(false);
-           // drawer.transform.position = new Vector3(currDrawerPosition.x,  currDrawerPosition.y, currDrawerPosition.z + toMove);
-            isOpen=false;
+            }
+            else {
+                safeDoor.transform.Rotate(new Vector3(0,0, -90));
+
+            }
+            isOpen=!isOpen;
         }
 
         else {
-            depthFieldBoxVolume.SetActive(true);
-            safeDoor.transform.Rotate(new Vector3(0,0, -90));
             GameObject.Instantiate(upcloseSafeToSpawn, spawnPosition, upcloseSafeToSpawn.transform.rotation);
-            isOpen=true;
         }
     }
 }
