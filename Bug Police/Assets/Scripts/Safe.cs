@@ -26,10 +26,8 @@ public class Safe : MonoBehaviour
     {
        spawnPosition =  Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane));
        size = upcloseSafeToSpawn.GetComponent<BoxCollider>().size;
-       spawnPosition.y = spawnPosition.y - size.y;
-       spawnPosition.z  = spawnPosition.z + 1f;
-       Debug.Log(spawnPosition);
-        
+       spawnPosition.y = spawnPosition.y - (size.y * upcloseSafeToSpawn.transform.localScale.y); 
+       spawnPosition.z  = spawnPosition.z + 1.75f;        
     }
 
     // Update is called once per frame
