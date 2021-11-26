@@ -30,9 +30,9 @@ public class MainMenuAnimation : MonoBehaviour
 
     private IEnumerator FullMainMenuAnimation()
     {
-        yield return StartCoroutine(SlideInRoutine(new Vector2(0.5f, 200f), titleOne));
-        yield return StartCoroutine(SlideInRoutine(new Vector2(0.5f, 115f), titleTwo));
-        yield return StartCoroutine(SlideInRoutine(new Vector2(0.5f, 25f), titleThree));
+        yield return StartCoroutine(SlideInRoutine(new Vector2(0.5f, 100), titleOne));
+        yield return StartCoroutine(SlideInRoutine(new Vector2(0.5f, 0f), titleTwo));
+        yield return StartCoroutine(SlideInRoutine(new Vector2(0.5f, -100f), titleThree));
 
     }
 
