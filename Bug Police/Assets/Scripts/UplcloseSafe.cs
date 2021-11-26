@@ -14,10 +14,14 @@ public class UplcloseSafe : MonoBehaviour
     [SerializeField]
     List<int> passCode;
 
-    private GameObject bbInstantiate;
+    SafeUnlockedEvent safeUnlockedEvent;
+
+    private GameObject bbInstantiate; // back button used to exit out of upclose safe view
     // Start is called before the first frame update
     void Start()
     {
+        safeUnlockedEvent = new SafeUnlockedEvent();
+        safeUnlockedEvent.AddListener(GameObject.FindGameObjectWithTag("Safe").GetComponent<Safe>().UnlockSafe);
         currCode = new List<int>();
         GameObject canvas = GameObject.FindGameObjectWithTag("Canvas");
         bbInstantiate = GameObject.Instantiate(backButton, canvas.GetComponent<RectTransform>());
@@ -25,6 +29,8 @@ public class UplcloseSafe : MonoBehaviour
     }
 
     public void BackButtonClick() {
+
+        // destroy back button and upclose safe
         GameObject.Destroy(bbInstantiate);
        GameObject.Destroy(gameObject);
     }
@@ -55,6 +61,7 @@ public class UplcloseSafe : MonoBehaviour
           // else if verification passed, fire unity event that the safe is now unlocked
            else {
                Debug.Log("Safe unlocked");
+               safeUnlockedEvent.Invoke();
            }
 
 

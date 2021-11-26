@@ -45,10 +45,10 @@ public class Safe : MonoBehaviour
         // TODO Possibly move to a state machine
         if (isUnlocked) {
             if (isOpen) {
-            safeDoor.transform.Rotate(new Vector3(0,0, 90));
+            safeDoor.transform.Rotate(new Vector3(0,-90, 0));
             }
             else {
-                safeDoor.transform.Rotate(new Vector3(0,0, -90));
+                safeDoor.transform.Rotate(new Vector3(0,90, 0));
 
             }
             isOpen=!isOpen;
@@ -57,5 +57,9 @@ public class Safe : MonoBehaviour
         else {
             GameObject.Instantiate(upcloseSafeToSpawn, spawnPosition, upcloseSafeToSpawn.transform.rotation);
         }
+    }
+
+    public void UnlockSafe() {
+        isUnlocked = true;
     }
 }
