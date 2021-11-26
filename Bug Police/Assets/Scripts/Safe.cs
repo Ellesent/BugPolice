@@ -19,14 +19,16 @@ public class Safe : MonoBehaviour
 
     Vector3 spawnPosition;
 
-    Vector3 size;
+    Vector3 safeSize;
 
     // Start is called before the first frame update
     void Start()
     {
        spawnPosition =  Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, Camera.main.nearClipPlane));
-       size = upcloseSafeToSpawn.GetComponent<BoxCollider>().size;
-       spawnPosition.y = spawnPosition.y - (size.y * upcloseSafeToSpawn.transform.localScale.y); 
+       Transform safeParentTransform = upcloseSafeToSpawn.transform.Find("safe");
+       Transform totalSafeTransform = safeParentTransform.Find("TotalSafe");
+       safeSize = totalSafeTransform.GetComponent<MeshRenderer>().bounds.size;
+       spawnPosition.y = spawnPosition.y - ((safeSize.y) * 0.75f); 
        spawnPosition.z  = spawnPosition.z + 1.75f;        
     }
 
